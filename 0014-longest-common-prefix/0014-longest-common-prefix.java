@@ -15,12 +15,13 @@ class Solution {
 
 
 
-        for(int i = 0 ; i<start.length();i++){
-
+        int i = 0 ;
+        while (i<start.length() && i<end.length()){
 
             if(start.charAt(i) == end.charAt(i)){
 
                 count++;
+                i++;
             }
             else {
                 break;
@@ -30,7 +31,6 @@ class Solution {
 
 
         }
-
 
 
 
