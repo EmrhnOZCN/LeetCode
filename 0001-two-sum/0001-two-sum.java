@@ -1,42 +1,42 @@
 class Solution {
-    public int[] twoSum(int[] nums, int target) {
+    public  int[]  twoSum(int[] nums, int target) {
 
-         int[] dizi  = new int[2];
-        int index1=0;
-        int index2=0;
+        Map<Integer,Integer> hashMap =  new HashMap<>();
 
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        for (int value : nums) {
-            arrayList.add(value);
-        }
 
-        for(int i = 0 ; i<arrayList.size();i++){
+        for(int i = 0 ; i<nums.length;i++){
 
 
 
 
-            int result = target-arrayList.get(i);
+            int result = target-nums[i];
 
-            if(arrayList.contains(result)){
 
-                index1=i;
-                index2 = arrayList.indexOf(result);
 
-                if(index1 !=index2){
-                   
-                    break;
-                }
+
+            if(hashMap.containsKey(result)){
+
+
+                return new int[]{hashMap.get(result),i};
+
+
+
+
+
+
             }
 
+            hashMap.put(nums[i],i);
+
 
         }
 
-        dizi[0]=index1;
-        dizi[1]=index2;
 
 
 
-        return dizi;
+        
+
+        return new int[] {};
         
     }
 }
