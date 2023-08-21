@@ -18,19 +18,19 @@ class Solution {
         int i = 0 ;
         while (i<start.length() && i<end.length()){
 
-            if(start.charAt(i) == end.charAt(i)){
-
-                count++;
-                i++;
-            }
-            else {
+            if(start.charAt(i) != end.charAt(i)){
                 break;
+               
             }
+            count++;
+            i++;
+            
 
 
 
 
         }
+
 
 
 
