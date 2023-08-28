@@ -2,36 +2,18 @@ class Solution {
     public String intToRoman(int num) {
 
 
-         HashMap<Integer, String> hashMap = new HashMap<>();
-        hashMap.put(1, "I");
-        hashMap.put(4, "IV");
-        hashMap.put(5, "V");
-        hashMap.put(9, "IX");
-        hashMap.put(10, "X");
-        hashMap.put(40, "XL");
-        hashMap.put(50, "L");
-        hashMap.put(90, "XC");
-        hashMap.put(100, "C");
-        hashMap.put(400, "CD");
-        hashMap.put(500, "D");
-        hashMap.put(900, "CM");
-        hashMap.put(1000, "M");
+        StringBuilder sb = new StringBuilder();
+        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] romanNumerals = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
-        String s = "";
-
-        Integer[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-
-        int i = 0;
-        while (num > 0) {
-            if (num >= values[i]) {
-                s += hashMap.get(values[i]);
+        for (int i = 0; i < values.length; i++) {
+            while (num >= values[i]) {
                 num -= values[i];
-            } else {
-                i++;
+                sb.append(romanNumerals[i]);
             }
         }
 
-        return s;
+        return sb.toString();
 
 
     }
