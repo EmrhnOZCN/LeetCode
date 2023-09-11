@@ -1,27 +1,25 @@
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         Set<String> wordSet = new HashSet<>(wordDict);
-        return wordBreakHelper(s, wordSet, 0, new Boolean[s.length()]);
-    }
 
-    public boolean wordBreakHelper(String s, Set<String> wordDict, int start, Boolean[] memo) {
-        if (start == s.length()) {
-            return true;
-        }
+        int n = s.length();
 
-        if (memo[start] != null) {
-            return memo[start];
-        }
+        boolean[] dp = new boolean[n+1];
 
-        for (int end = start + 1; end <= s.length(); end++) {
-            String word = s.substring(start, end);
-            if (wordDict.contains(word) && wordBreakHelper(s, wordDict, end, memo)) {
-                memo[start] = true;
-                return true;
+        dp[0] = true;
+
+        for(int i = 0; i<=n;i++){
+
+            for(int j = 0 ; j<i ; j++){
+
+                if(dp[j] == true && wordSet.contains(s.substring(j,i))){
+                    dp[i] = true;
+
+                    break;
+                }
             }
         }
 
-        memo[start] = false;
-        return false;
+        return dp[n];
     }
 }
