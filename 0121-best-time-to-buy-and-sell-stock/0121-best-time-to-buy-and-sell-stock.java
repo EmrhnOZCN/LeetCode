@@ -5,8 +5,8 @@ class Solution {
         }
 
         int n = prices.length;
-        int[] dp = new int[n]; // dp[i], i. günün sonunda elde edilebilecek maksimum karı saklar
-        int minPrice = prices[0]; // Şu ana kadar görülen en düşük fiyatı saklar
+        int[] dp = new int[n]; 
+        int minPrice = prices[0];
 
         for (int i = 1; i < n; i++) {
             minPrice = Math.min(minPrice, prices[i]);
