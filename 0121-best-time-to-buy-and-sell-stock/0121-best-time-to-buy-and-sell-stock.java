@@ -3,7 +3,6 @@ class Solution {
         if (prices.length <= 1) {
             return 0;
         }
-
         int n = prices.length;
         int[] dp = new int[n]; 
         dp[0] = 0;
