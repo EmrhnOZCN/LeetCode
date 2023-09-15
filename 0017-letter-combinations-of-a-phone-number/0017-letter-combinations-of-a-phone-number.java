@@ -1,31 +1,45 @@
 class Solution {
-    public List<String> letterCombinations(String digits) {
-        ArrayList<String> resultList = new ArrayList<>();
+    private Map<Character, String> digitToLetters = new HashMap<>();
+    private List<String> resultList = new ArrayList<>();
 
+    public List<String> letterCombinations(String digits) {
         if (digits == null || digits.length() == 0) {
             return resultList;
         }
 
-        String[] letters = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        generateCombinations(letters, digits, 0, "", resultList);
+        // Rakamlara karşılık gelen harf kombinasyonlarını oluştur
+        digitToLetters.put('2', "abc");
+        digitToLetters.put('3', "def");
+        digitToLetters.put('4', "ghi");
+        digitToLetters.put('5', "jkl");
+        digitToLetters.put('6', "mno");
+        digitToLetters.put('7', "pqrs");
+        digitToLetters.put('8', "tuv");
+        digitToLetters.put('9', "wxyz");
+
+        generateCombinations(digits, 0, new StringBuilder());
 
         return resultList;
+
+
     }
 
-    private void generateCombinations(String[] letters, String digits, int currentIndex, String currentCombination, List<String> resultList) {
+
+    private void generateCombinations(String digits, int currentIndex, StringBuilder currentCombination) {
         if (currentIndex == digits.length()) {
-            resultList.add(currentCombination);
+            resultList.add(currentCombination.toString());
             return;
         }
 
-        int k = Character.getNumericValue(digits.charAt(currentIndex));
+        char currentDigit = digits.charAt(currentIndex);
+        String letterOptions = digitToLetters.get(currentDigit);
 
-        if (k >= 2 && k <= 9) { // 2 ile 9 arasındaki rakamları kontrol edin
-            String letterOptions = letters[k - 2]; // İlgili harfleri alın
-
-            for (int j = 0; j < letterOptions.length(); j++) {
-                char letter = letterOptions.charAt(j);
-                generateCombinations(letters, digits, currentIndex + 1, currentCombination + letter, resultList);
+        if (letterOptions != null) {
+            for (int i = 0; i < letterOptions.length(); i++) {
+                char letter = letterOptions.charAt(i);
+                currentCombination.append(letter);
+                generateCombinations(digits, currentIndex + 1, currentCombination);
+                currentCombination.deleteCharAt(currentCombination.length() - 1);
             }
         }
     }
