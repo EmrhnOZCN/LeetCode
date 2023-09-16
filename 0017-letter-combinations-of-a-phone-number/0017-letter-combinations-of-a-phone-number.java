@@ -7,7 +7,6 @@ class Solution {
             return resultList;
         }
 
-        // Rakamlara karşılık gelen harf kombinasyonlarını oluştur
         digitToLetters.put('2', "abc");
         digitToLetters.put('3', "def");
         digitToLetters.put('4', "ghi");
