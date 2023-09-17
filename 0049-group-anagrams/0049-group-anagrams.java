@@ -41,8 +41,8 @@ class Solution {
 
         }
 
-        for (List<String> group : map.values()) {
-            result.add(group);
+        for (String key : map.keySet()) {
+            result.add(map.get(key));
         }
 
 
