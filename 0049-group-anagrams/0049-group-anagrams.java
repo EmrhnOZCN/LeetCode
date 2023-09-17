@@ -6,13 +6,7 @@ class Solution {
         List<List<String>> result = new ArrayList<>();
 
 
-        if (strs == null || strs.length == 0) {
-            return result;
-        }
-        if (strs.length == 1) {
-            result.add(Arrays.asList(strs));
-            return result;
-        }
+        
 
         for (String word: strs
         ) {
