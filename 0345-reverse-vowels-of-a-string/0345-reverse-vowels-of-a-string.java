@@ -1,40 +1,34 @@
 class Solution {
     public String reverseVowels(String s) {
 
-        char[] chars = s.toCharArray();
 
-        int start = 0 ;
+ StringBuilder sb = new StringBuilder(s);
+    int start = 0;
+    int end = s.length() - 1;
 
-        int end = s.length()-1;
-
-        while (start<end){
-            while (start < end && !isVowel(chars[start])) {
-                start++;
-            }
-
-            while (start < end && !isVowel(chars[end])) {
-                end--;
-            }
-
-            if (start < end) {
-                swap(chars, start, end);
-                start++;
-                end--;
-            }
-
+    while (start < end) {
+        while (start < end && !isVowel(sb.charAt(start))) {
+            start++;
         }
 
-        return new String(chars);
+        while (start < end && !isVowel(sb.charAt(end))) {
+            end--;
+        }
+
+        if (start < end) {
+            char temp = sb.charAt(start);
+            sb.setCharAt(start, sb.charAt(end));
+            sb.setCharAt(end, temp);
+            start++;
+            end--;
+        }
     }
 
-    private void swap(char[] word, int start, int end){
-        char temp = word[start];
-        word[start] = word[end];
-        word[end] = temp;
-    }
+    return sb.toString();
+}
+private static final Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));
 
-    private boolean isVowel(char c) {
-        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
-                || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
-    }
+private boolean isVowel(char c) {
+    return vowels.contains(c);
+}
 }
