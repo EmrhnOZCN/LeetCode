@@ -6,7 +6,6 @@ class Solution {
         List<List<String>> result = new ArrayList<>();
 
 
-
         for (String word: strs
         ) {
             char[] charArray = word.toCharArray();
