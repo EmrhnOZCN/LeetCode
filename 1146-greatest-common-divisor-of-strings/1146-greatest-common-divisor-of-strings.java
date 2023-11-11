@@ -1,14 +1,28 @@
 class Solution {
-    public String gcdOfStrings(String str1, String str2) {
-      
-        if (!(str1 + str2).equals(str2 + str1))
-            return "";
-       
-        int gcd = gcd(str1.length(), str2.length());
-        return str1.substring(0, gcd);
-    }
+   public String gcdOfStrings(String str1, String str2) {
+        String bigger = null;
+        String smaller = null;
 
-    private int gcd(int a, int b) {
-        return b == 0 ? a : gcd(b, a % b);
+        if (str1.length() > str2.length()) {
+            bigger = str1;
+            smaller = str2;
+        } else {
+            bigger = str2;
+            smaller = str1;
+        }
+
+        if (bigger.equals(smaller)) {
+            return smaller;
+        }
+        if (!bigger.startsWith(smaller)) {
+            return "";
+        }
+        return gcdOfStrings(bigger.substring(smaller.length()), smaller);
     }
+       
+
+        
+       
+
+  
 }
